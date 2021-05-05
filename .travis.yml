@@ -1,0 +1,21 @@
+language: go
+os: linux
+dist: bionic
+jobs:
+  include:
+   - &unit-test
+     stage: run unit test
+     name = test1
+     script:
+       - echo ${{ name }}
+     name: run unit test on amd64
+     name = test2
+     arch: amd64
+   - <<: *unit-test
+     name: run unit test on ppc64le
+     name = test3
+     arch: ppc64le
+   - <<: *unit-test
+     name: run unit test on s390x
+     name = test4
+     arch: s390x
